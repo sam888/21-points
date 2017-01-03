@@ -1,0 +1,89 @@
+buildscript {
+    repositories {
+        mavenLocal()
+        mavenCentral()
+        jcenter()
+        maven { url "http://repo.spring.io/plugins-release" }
+        maven { url "http://repo.spring.io/milestone" }
+        maven { url "https://plugins.gradle.org/m2/" }
+    }
+    dependencies {
+        classpath "org.sonarsource.scanner.gradle:sonarqube-gradle-plugin:2.0.1"
+        classpath "net.ltgt.gradle:gradle-apt-plugin:0.6"
+        classpath "org.springframework.boot:spring-boot-gradle-plugin:${spring_boot_version}"
+        classpath "org.springframework.build.gradle:propdeps-plugin:0.0.7"
+        classpath "com.moowork.gradle:gradle-node-plugin:0.12"
+        classpath "com.moowork.gradle:gradle-gulp-plugin:0.12"
+        classpath "se.transmode.gradle:gradle-docker:1.2"
+        classpath "io.spring.gradle:dependency-management-plugin:0.5.6.RELEASE"
+        //jhipster-needle-gradle-buildscript-dependency - JHipster will add additional gradle build script plugins here
+    }
+}
+
+allprojects {
+    apply plugin: 'maven'
+
+    group = 'org.jhipster.health'
+    version = '2.0.0-SNAPSHOT'
+}
+
+subprojects {
+
+    apply plugin: 'java'
+
+    // This will create bootRepackage task automatically for all sub projects so they all use the same dependency
+    // versions enforced enforced by spring boot, i.e. http://docs.spring.io/spring-boot/docs/current/reference/html/appendix-dependency-versions.html.
+    // One advantage of this is any dependency enforced by spring boot can be declared in sub projects without specifying
+    // its version.
+    apply plugin: 'spring-boot'
+
+    // Only true for 21-points_web project else build will fail for any sub-projects that don't have mainClass declared,
+    // i.e. only build.gradle in 21-points_web has: bootRepackage { mainClass='org.jhipster.health.Application' }
+    bootRepackage.enabled = false
+
+    sourceCompatibility=1.8
+    targetCompatibility=1.8
+
+//    tasks.withType(JavaCompile) {
+//        options.encoding = 'UTF-8'
+//    }
+
+    repositories {
+        mavenLocal()
+        mavenCentral()
+        jcenter()
+        maven { url 'http://repo.spring.io/milestone' }
+        maven { url 'http://repo.spring.io/snapshot' }
+        maven { url 'https://repository.jboss.org/nexus/content/repositories/releases' }
+        maven { url 'https://oss.sonatype.org/content/repositories/releases' }
+        maven { url 'https://oss.sonatype.org/content/repositories/snapshots' }
+        maven { url 'http://repo.maven.apache.org/maven2' }
+    }
+
+    clean {
+        delete "target"
+    }
+
+    task cleanResources(type: Delete) {
+        delete 'build/resources'
+    }
+
+    task wrapper(type: Wrapper) {
+        gradleVersion = '3.2'
+    }
+
+    dependencies {
+
+        // Make all sub-projects inherit these testing frameworks
+        testCompile "org.assertj:assertj-core:${assertj_core_version}"
+        testCompile "junit:junit"
+        testCompile "org.mockito:mockito-core"
+
+        //        testCompile group: 'org.mockito', name: 'mockito-core', version: '1.9.0'
+        //        testCompile group: 'org.dbunit', name: 'dbunit', version: '2.4.8'
+        //
+        //        testCompile group: 'org.powermock', name: 'powermock-module-junit4', version: '1.4.12'
+        //        testCompile group: 'org.powermock', name: 'powermock-api-mockito', version: '1.4.12'
+        //        testCompile group: 'org.powermock', name: 'powermock-core', version: '1.4.12'
+    }
+}
