@@ -1,1 +1,4 @@
 rootProject.name = '21-points'
+
+include '21-points_model', '21-points_util', '21-points_dto', '21-points_dao', '21-points_service', '21-points_web'
+
