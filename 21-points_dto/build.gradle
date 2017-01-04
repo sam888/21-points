@@ -1,0 +1,10 @@
+description = '21-points_dto'
+
+dependencies {
+
+    compile project(":21-points_model")
+
+    compile "com.fasterxml.jackson.core:jackson-annotations:${jackson_version}"
+    compile "org.hibernate:hibernate-validator"
+
+}

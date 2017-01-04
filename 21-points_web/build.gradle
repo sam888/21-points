@@ -134,7 +134,7 @@ dependencies {
     compile "com.fasterxml.jackson.datatype:jackson-datatype-hppc:${jackson_version}"
     compile "com.fasterxml.jackson.datatype:jackson-datatype-jsr310:${jackson_version}"
     compile "com.fasterxml.jackson.datatype:jackson-datatype-hibernate4"
-    compile "com.fasterxml.jackson.core:jackson-annotations:${jackson_version}"
+    // compile "com.fasterxml.jackson.core:jackson-annotations:${jackson_version}"
     compile "com.fasterxml.jackson.core:jackson-databind:${jackson_version}"
     compile ("com.ryantenney.metrics:metrics-spring:${metrics_spring_version}") {
         exclude(module: 'metrics-core')
