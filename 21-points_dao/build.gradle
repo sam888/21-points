@@ -1,0 +1,11 @@
+description = '21-points_dao'
+
+
+dependencies {
+
+    compile project(":21-points_model")
+    compile project(":21-points_util")
+
+    compile "javax.inject:javax.inject:${javax_inject_version}"
+}
+

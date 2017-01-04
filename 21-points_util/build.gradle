@@ -1,0 +1,10 @@
+description = '21-points_util'
+
+dependencies {
+
+    compile project(":21-points_model")
+
+    compile "org.springframework.security:spring-security-web:${spring_security_version}"
+    compile "org.springframework.boot:spring-boot-actuator"
+
+}

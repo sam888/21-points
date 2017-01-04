@@ -2,7 +2,6 @@ package org.jhipster.health.repository;
 
 import org.jhipster.health.config.audit.AuditEventConverter;
 import org.jhipster.health.domain.PersistentAuditEvent;
-
 import org.springframework.boot.actuate.audit.AuditEvent;
 import org.springframework.boot.actuate.audit.AuditEventRepository;
 import org.springframework.stereotype.Repository;
