@@ -1,6 +1,7 @@
 package org.jhipster.health.web.rest.vm;
 
 import org.jhipster.health.config.Constants;
+
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;

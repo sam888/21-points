@@ -1,0 +1,17 @@
+description = '21-points_service'
+
+dependencies {
+
+    compile project(":21-points_dao")
+    compile project(":21-points_util")
+    compile project(":21-points_dto")
+
+    compile "org.springframework.boot:spring-boot-starter-thymeleaf"
+    compile "org.mapstruct:mapstruct-jdk8:${mapstruct_version}"
+
+    compile ("org.springframework:spring-context-support") {
+        exclude(module: 'quartz')
+    }
+
+    compile "org.apache.geronimo.javamail:geronimo-javamail_1.4_mail:${geronimo_javamail_1_4_mail_version}"
+}
