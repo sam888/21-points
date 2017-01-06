@@ -15,7 +15,7 @@
         +--- Project ':21-points_util' - 21-points_util
         \--- Project ':21-points_web'
 
- To run, simply type 'gradlew bootRun' in command line at root project directory.
+ To run, simply type 'gradlew :21-points_web:bootRun' in command line at root project directory.
  
  
  5-Jan-2017
